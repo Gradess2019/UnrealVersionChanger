@@ -169,6 +169,7 @@ def main():
         unreal_combobox["state"] = DISABLED
         version_entry["state"] = DISABLED
         button_change["state"] = DISABLED
+        button_engine["state"] = DISABLED
         button_restore["state"] = NORMAL
         restore_needed = True
 
@@ -190,6 +191,7 @@ def main():
         unreal_combobox["state"] = NORMAL
         version_entry["state"] = NORMAL
         button_change["state"] = NORMAL
+        button_engine["state"] = NORMAL
         button_restore["state"] = DISABLED
         restore_needed = False
 
