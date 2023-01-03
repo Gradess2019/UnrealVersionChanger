@@ -3,8 +3,8 @@ I was too lazy to download the whole engine just to download 25 MB plugin, that 
 
 Simple tool for faking UE version for Epic Games Store so we can install outdated / non-upgraded plugins to newer UE version without installing old UE
 
-## WARNING!
-I did my best to prevent corrupting Epic Games Store files data, the tool will save every file before modifying it in **EpicGamesBackup** directory next to **main.pyw** file. if you get stuck with broken EGS data, just restore files from backup.
+## DISCLAIMER!
+I did my best to prevent corrupting Epic Games Store files data, the tool will save every file before modifying it in **EpicGamesBackup** directory next to **main.pyw** file. if you get stuck with broken EGS data, just restore files from backup. Use it on your own risk.
 
 ## How to use
 - Download [latest release](https://github.com/Gradess2019/UnrealVersionChanger/releases/latest)
