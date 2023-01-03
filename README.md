@@ -24,3 +24,6 @@ I did my best to prevent corrupting Epic Games Store files data, the tool will s
 - Press **Open** to see the directory of Engine, where your plugin was downloaded to.
 
 ![image_2023-01-03_05-28-35 (4)](https://user-images.githubusercontent.com/38568823/210301095-783a390b-f78d-4ee6-9c70-cfaffa4bea94.png)
+
+- Copy that plugin wherever you want
+- Done
