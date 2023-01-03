@@ -135,7 +135,7 @@ def main():
     frame.pack(fill="both")
 
     # Top
-    top_frame = Frame(frame, padx=8, pady=4)
+    top_frame = Frame(frame, padx=4, pady=4)
     top_frame.grid(row=0, column=0, sticky=NW)
 
     label = Label(top_frame, text="UE version")
@@ -146,7 +146,7 @@ def main():
     unreal_combobox.grid(row=0, column=1, sticky=NW, padx=8)
 
     # Middle
-    middle_frame = Frame(frame, padx=8, pady=4)
+    middle_frame = Frame(frame, padx=4, pady=4)
     middle_frame.grid(row=1, column=0, sticky=NW)
 
     label = Label(middle_frame, text="New UE version")
@@ -157,7 +157,7 @@ def main():
     version_entry.grid(row=0, column=1, sticky=NW, padx=8)
 
     # Bottom
-    bottom_frame = Frame(frame, padx=8, pady=4)
+    bottom_frame = Frame(frame, padx=4, pady=4)
     bottom_frame.grid(row=2, column=0, sticky=NW)
 
     restore_needed = False
@@ -203,11 +203,21 @@ def main():
                 with open(path, "r") as f:
                     unreal_items[path] = json.load(f)
 
+    def on_open_engine_dir():
+        unreal_version = unreal_combobox.get()
+        for path, data in unreal_items.items():
+            if get_unreal_version(data) == unreal_version:
+                plugins_location = os.path.join(data["InstallLocation"], "Engine", "Plugins", "Marketplace")
+                os.startfile(plugins_location)
+
     button_change = Button(bottom_frame, text="Change", command=on_change_version)
     button_change.grid(row=0, column=0, sticky=NW)
 
     button_restore = Button(bottom_frame, text="Restore", command=on_restore_version, state=DISABLED)
-    button_restore.grid(row=0, column=1, sticky=NW, padx=8)
+    button_restore.grid(row=0, column=1, sticky=NW)
+
+    button_engine = Button(bottom_frame, text="Open", command=on_open_engine_dir)
+    button_engine.grid(row=0, column=3, sticky=NW)
 
     def on_close():
         nonlocal restore_needed
