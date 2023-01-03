@@ -5,7 +5,7 @@ import subprocess
 import tkinter
 import winreg
 from pathlib import Path
-from tkinter import Frame, Tk, NW, DISABLED, NORMAL, Toplevel, CENTER
+from tkinter import Frame, Tk, NW, DISABLED, NORMAL, Toplevel, CENTER, messagebox
 from tkinter.ttk import Combobox, Label, Entry, Button
 
 
@@ -207,8 +207,15 @@ def main():
         unreal_version = unreal_combobox.get()
         for path, data in unreal_items.items():
             if get_unreal_version(data) == unreal_version:
-                plugins_location = os.path.join(data["InstallLocation"], "Engine", "Plugins", "Marketplace")
-                os.startfile(plugins_location)
+                plugins_location = os.path.join(data["InstallLocation"], "Engine", "Plugins")
+                marketplace_location = os.path.join(plugins_location, "Marketplace")
+
+                if os.path.exists(marketplace_location):
+                    os.startfile(marketplace_location)
+                else:
+                    messagebox.showerror("Error", f"Directory doesn't exist: {marketplace_location}")
+                    if os.path.exists(plugins_location):
+                        os.startfile(plugins_location)
 
     button_change = Button(bottom_frame, text="Change", command=on_change_version)
     button_change.grid(row=0, column=0, sticky=NW)
