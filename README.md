@@ -17,6 +17,9 @@ I did my best to prevent corrupting Epic Games Store files data, the tool will s
 
 - Open EGS
 - Install plugin
+
+![image_2023-01-03_05-01-12](https://user-images.githubusercontent.com/38568823/210302690-68b49342-1ed8-4e21-94b7-888c494a9b18.png)
+
 - Press **Restore**
 
 ![image_2023-01-03_05-28-35 (2)](https://user-images.githubusercontent.com/38568823/210301093-d85a2a33-ef8e-47ed-ae16-814307882139.png)
@@ -27,3 +30,4 @@ I did my best to prevent corrupting Epic Games Store files data, the tool will s
 
 - Copy that plugin wherever you want
 - Done
+
