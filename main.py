@@ -48,11 +48,12 @@ def get_egs_items():
 
 def get_unreal_items():
     ue_items = {}
+    unreal_binary_names = ("UnrealEditor", "UE4Editor")
     for item in get_egs_items():
         with open(item, "r") as f:
             data = json.load(f)
 
-            if data["LaunchExecutable"].find("UnrealEditor") != -1:
+            if any(str in data["LaunchExecutable"] for str in unreal_binary_names):
                 ue_items[item] = data
 
     return ue_items
@@ -85,8 +86,11 @@ def restore_backup(path: str, backup_dir: str):
 
 
 def change_item_version(path: str, ue_item: dict, version: str):
+    original_version = get_unreal_version(ue_item)
     ue_item["AppName"] = "UE_" + version
     ue_item["MainGameAppName"] = "UE_" + version
+    # Make it clear what version has what installed
+    ue_item["AppVersionString"] = ue_item["AppVersionString"].replace(original_version, version)
 
     with open(path, "w") as f:
         json.dump(ue_item, f, indent=4)
