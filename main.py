@@ -31,6 +31,8 @@ def get_egs_manifest_directory():
 
         except FileNotFoundError:
             continue
+        except PermissionError:
+            continue
 
     return None
 
