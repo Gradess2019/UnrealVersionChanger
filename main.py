@@ -51,12 +51,19 @@ def get_egs_items():
 def get_unreal_items():
     ue_items = {}
     unreal_binary_names = ("UnrealEditor", "UE4Editor")
-    for item in get_egs_items():
-        with open(item, "r") as f:
-            data = json.load(f)
 
-            if any(str in data["LaunchExecutable"] for str in unreal_binary_names):
-                ue_items[item] = data
+    for item in get_egs_items():
+        try:
+            with open(item, "r", encoding="utf-8") as f:
+                if os.path.getsize(item) == 0:
+                    continue  # Saltar archivos vacíos
+
+                data = json.load(f)
+
+                if any(binary in data.get("LaunchExecutable", "") for binary in unreal_binary_names):
+                    ue_items[item] = data
+        except (json.JSONDecodeError, KeyError):
+            continue  # Ignora archivos malformados o sin los datos necesarios
 
     return ue_items
 
